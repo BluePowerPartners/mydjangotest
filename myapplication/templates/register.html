@@ -1,0 +1,56 @@
+{% extends 'inc/layouts.html' %}
+
+{% block content %}
+<section class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <label for="" class="form-label">Enter User Name</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="mb-4">
+                        <label for="" class="form-label">Enter E-Mail</label>
+                        {{ form.email }}
+
+                    </div>
+                    <div class="mb-4">
+                        <label for="" class="form-label">Enter Password</label>
+                        {{ form.password1 }}
+
+                    </div>
+                    <div class="mb-4">
+                        <label for="" class="form-label">Re-Enter Password</label>
+                        {{ form.password2 }}
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+            <div class="col-6">
+                       
+                        {% if form.errors.username %}
+                            <label class="text-danger">{{ form.errors.username }}</label>
+                        {% endif %}
+                    
+                        {% if form.errors.email %}
+                            <label class="text-danger">{{ form.errors.email }}</label>
+                        {% endif %}
+                    
+                        {% if form.errors.password1 %}
+                            <label class="text-danger">{{ form.errors.password1 }}</label>
+                        {% endif %}
+                    
+                        {% if form.errors.password2 %}
+                            <label class="text-danger">{{ form.errors.password2 }}</label>
+                        {% endif %}
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+{% endblock %}
