@@ -29,6 +29,9 @@ DEBUG = True
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['mytestdjango.azurewebsites.net', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = [
+    'mytestdjango.azurewebsites.net','https://mytestdjango.azurewebsites.net'
+]
 
 # Application definition
 
