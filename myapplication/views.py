@@ -5,6 +5,7 @@ import pyodbc
 from .form import Customuserform
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
+from django.views.decorators.csrf import csrf_exempt
 
 def connection():
     s = 'copflidar.database.windows.net' #Your server name 
@@ -16,11 +17,11 @@ def connection():
     return conn
 
 # Create your views here.
-
+@csrf_exempt
 def homepage(request):
     return render(request,"homepage.html")
 
-
+@csrf_exempt
 def register(request):
     form=Customuserform()
     if request.method=='POST':
@@ -32,7 +33,7 @@ def register(request):
 
     return render(request,"register.html",{'form':form})
 
-
+@csrf_exempt
 def login_page(request):
     if request.method=='POST':
         name=request.POST.get('username')
@@ -63,7 +64,7 @@ def login_page(request):
 #         return JsonResponse({'Status':'Invalid Acess'},status=200)
 #     return render(request,"homepage.html")
 
-
+@csrf_exempt
 def submit_btn(request):
     print(request.method)
     if request.method=='POST':
