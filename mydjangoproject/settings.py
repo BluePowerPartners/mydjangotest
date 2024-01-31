@@ -29,6 +29,7 @@ DEBUG = False
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['mytestdjango.azurewebsites.net', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ['https://mytestdjango.azurewebsites.net']
 
 # Application definition
 INSTALLED_APPS = [
@@ -138,19 +139,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "/static/"
 
-
-# STATIC FILES WILL BE SERVED FROM STATIC_CDN WHEN WE ARE LIVE - OUT SIDE OF PROJECT
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),'static_cdn','static_root')
-
-
-#THIS KEEPS THE PROJECT FILES - CSS/JS/IMAGES/FONTS
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static_in_proj','our_static'),
-]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+# STATIC FILES WILL BE SERVED FROM STATIC_CDN WHEN WE ARE LIVE - OUT SIDE OF PROJECT
+# STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),'static_cdn','static_root')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+#THIS KEEPS THE PROJECT FILES - CSS/JS/IMAGES/FONTS
+# STATICFILES_DIRS = [os.path.join(BASE_DIR,'static_in_proj','our_static'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'myapplication','static'),]
+STATIC_URL = "/myapplication/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
