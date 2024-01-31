@@ -7,6 +7,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from django.views.decorators.csrf import csrf_exempt
 
+
+
 def connection():
     s = 'copflidar.database.windows.net' #Your server name 
     d = 'copflidar' 
