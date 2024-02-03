@@ -1,6 +1,8 @@
 
 $(document).ready(function(){
   var disableSpecificDates = ["10-1-2024"];
+  var disableSpecificDates = document.getElementById("hiddenValue").value;
+
   $('#datepicker').datepicker({
       format: 'yyyy-mm-dd',
       multidate: true,

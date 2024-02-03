@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-x1)vf%-x!v6fwpisne))lvdw7@c#a$mr2xvb2gdnq47_-c*cp#"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['mytestdjango.azurewebsites.net', '127.0.0.1']
@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     'django.contrib.humanize',
-    "myapplication.apps.MyapplicationConfig"
+    'crispy_bootstrap5',
+    'crispy_forms',
+    "myapplication.apps.MyapplicationConfig",
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -139,7 +143,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 

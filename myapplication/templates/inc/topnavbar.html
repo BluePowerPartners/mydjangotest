@@ -1,0 +1,40 @@
+{% load static %}
+    <!-- Add this code inside the <body> section of your HTML file -->
+    <style>
+        .bg-light {
+        background-color: #002F4F!important;
+    }
+        .navbar-light .navbar-nav .nav-link {
+        color: #ffffff;
+        }
+    </style>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class=".navbarcustom container" style="max-width: 1850px;">
+        <!-- Navbar Toggler Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+        <!-- Logo -->
+        <a class="navbar-brand ml-auto" href="#">
+            <img src="{% static 'images/bpplogo1.png' %}" alt="Your Logo" height="60">
+        </a>
+        <!-- Navbar Links and Logo on the Right -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <!-- Left-aligned Links -->
+            <ul class="navbar-nav" >
+                <li class="nav-item">
+                    <a class="nav-link" href="/">My Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/submit">Apply Leave / WFH</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Availability Check</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    
