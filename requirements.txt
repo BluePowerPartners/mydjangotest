@@ -12,8 +12,8 @@ django-crispy-forms==2.1
 django-datetime-widget==0.9.3
 django-datetimepicker==3.14
 mssql-django==1.4
-numpy==1.26.3
-pandas==2.2.0
+numpy
+pandas
 pydantic==2.6.0
 pydantic_core==2.16.1
 pyodbc==5.0.1
