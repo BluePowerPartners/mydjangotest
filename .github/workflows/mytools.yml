@@ -1,0 +1,36 @@
+name: Zip and Store Code in Blob Storage
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  zip-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Zip the code
+      run: |
+        # Create a zip file with timestamp for uniqueness
+        timestamp=$(date +"%Y%m%d_%H%M%S")
+        zip -r code_$timestamp.zip .
+        
+        # Set the zip file name as an output for the next step
+        echo "ZIP_FILE=code_$timestamp.zip" >> $GITHUB_ENV
+
+    - name: Upload to Azure Blob Storage
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          # Install az extension if not present
+          az extension add --name storage-preview --yes
+          
+          # Upload the zip file to blob storage
+          az storage blob upload \
+            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} \
+            --account-key ${{ secrets.AZURE_STORAGE_ACCOUNT_KEY }} \
+            --container-name ${{ secrets.AZURE_STORAGE_CONTAINER_NAME }} \
+            --file ${{ env.ZIP_FILE }} \
+            --name ${{ env.ZIP_FILE }}
